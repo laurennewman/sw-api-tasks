@@ -7,8 +7,8 @@ import random
 
 # Specify your database connection here.
 try:
-    db_cnx = mysql.connector.connect(user='username', password='password', 
-        host='localhost', database='swapi_tasks', 
+    db_cnx = mysql.connector.connect(user='username', password='password',
+        host='localhost', database='swapi_tasks',
         auth_plugin='mysql_native_password')
 except:
     print("Could not connect to the database...")
@@ -57,7 +57,7 @@ def check_random_num(random_num):
 def get_people(random_num):
     try:
         # Assemble url.
-        url : str = "https://swapi.co/api/people/" + str(random_num) + "/"
+        url : str = "http://swapi.dev/api/people/" + str(random_num) + "/"
         
         # Hit the GET /people/ endpoint.
         response = requests.get(url)
@@ -75,9 +75,9 @@ def get_people(random_num):
             # Iterate through films.
             films : list = data["films"]
             for film in films:
-                film_id : int = (film[len("https://swapi.co/api/films/"):
+                film_id : int = (film[len("http://swapi.dev/api/films/"):
                     len(film)-1])
-                
+
                 # Save films that people were in to relationship table.
                 logging.debug("Saving people_id " + str(random_num) 
                     + " and film_id " + str(film_id) 
@@ -126,7 +126,7 @@ def get_films():
             logging.debug("Getting film " + str(film_id) + "...")
 
             # Assemble url.
-            url : str = "https://swapi.co/api/films/" + str(film_id) + "/"
+            url : str = "http://swapi.dev/api/films/" + str(film_id) + "/"
 
             # Hit the GET /films/ endpoint.
             response = requests.get(url)

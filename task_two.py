@@ -8,7 +8,7 @@ logging.basicConfig(filename="task_two.log",level=logging.DEBUG)
 def get_data(id, resource):
     try:
         # Assemble url.
-        url : str = "https://swapi.co/api/" + resource + "/" + str(id) + "/"
+        url : str = "http://swapi.dev/api/" + resource + "/" + str(id) + "/"
         
         # Hit the GET /{resource}/ endpoint.
         response = requests.get(url)
@@ -43,7 +43,7 @@ def list_nested_resources(dict):
                 # changes.
                 nested_resources.append(element)
             elif isinstance(dict[element], str):
-                if "https://swapi.co/api/" in dict[element]:
+                if "http://swapi.dev/api/" in dict[element]:
                     nested_resources.append(element)
         logging.debug("Nested resources are " + str(nested_resources))
         return nested_resources
@@ -63,7 +63,7 @@ def get_nested_resources(dict, nested_resources):
             if resource == "characters": resource = "people"
             
             # Assemble base url.
-            base_url = "https://swapi.co/api/" + resource + "/"
+            base_url = "http://swapi.dev/api/" + resource + "/"
             
             # Get nested data from the SWAPI.
             for item in resource_list:
