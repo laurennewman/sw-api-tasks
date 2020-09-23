@@ -3,7 +3,8 @@ import datetime
 import requests
 import json
 
-logging.basicConfig(filename="task_two.log",level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
+
 
 def get_data(id, resource):
     try:
@@ -29,6 +30,7 @@ def get_data(id, resource):
         logging.error("Something went wrong in the get_data function...")
         raise e
 
+
 def list_nested_resources(dict):
     try:
         # Create a list of data elements that include urls.
@@ -51,6 +53,7 @@ def list_nested_resources(dict):
         logging.error("Something went wrong in the list_nested_resources "
             "function...")
         raise e
+
 
 def get_nested_resources(dict, nested_resources):
     try:
@@ -90,12 +93,14 @@ def get_nested_resources(dict, nested_resources):
             "get_nested_resources function...")
         raise e
 
+
 def is_number(num):
     try:
         float(num)
         return True
     except ValueError:
         return False
+
 
 def convert_character_units(dict):
     try:
@@ -137,6 +142,7 @@ def convert_character_units(dict):
             "function...")
         raise e
 
+
 def main():
     try:
         logging.debug("Starting at " + str(datetime.datetime.now()) + "...")
@@ -170,6 +176,7 @@ def main():
     except Exception as e:
         logging.error("Something went wrong in the main function...")
         raise e
+
 
 if __name__ == "__main__":
     main()
